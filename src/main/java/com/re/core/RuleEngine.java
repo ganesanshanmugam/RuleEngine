@@ -3,20 +3,20 @@ package com.re.core;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RuleEngine {
+public class RuleEngine<M> {
 
     static List<IRule> ruleList = new ArrayList<IRule>();
 
 
-    public Phone runRule(Phone phone) {
+    public M runRule(M model, String message) {
 
         return ruleList.stream()
-                .filter(rule -> rule.matches(phone))
-                .map(rule -> (Phone) rule.process(phone))
-                .findFirst().orElseThrow(() -> new RuntimeException("No Match rule found"));
+                .filter(rule -> rule.matches(model))
+                .map(rule -> (M) rule.process(model))
+                .findFirst().orElseThrow(() -> new RuntimeException(message));
     }
 
-    public RuleEngine register(IRule<Phone, Phone> iRule) {
+    public RuleEngine register(IRule<M, M> iRule) {
         ruleList.add(iRule);
         return this;
     }

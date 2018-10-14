@@ -1,8 +1,6 @@
-package com.re.core.rule;
+package com.re.core.phonerule;
 
 import com.re.core.IRule;
-import com.re.core.OSType;
-import com.re.core.Phone;
 
 public class Android implements IRule<Phone, Phone> {
     @Override

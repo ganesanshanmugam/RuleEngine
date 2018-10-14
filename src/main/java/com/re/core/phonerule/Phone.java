@@ -1,4 +1,4 @@
-package com.re.core;
+package com.re.core.phonerule;
 
 public class Phone {
 
